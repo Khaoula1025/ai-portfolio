@@ -62,6 +62,7 @@ function Layer({ layer, index, visible }) {
 
   return (
     <div
+      className="skill-layer"
       style={{
         background: "#fff",
         border: "0.5px solid #E8E0D3",
@@ -76,12 +77,13 @@ function Layer({ layer, index, visible }) {
                      transform .55s cubic-bezier(.16,1,.3,1) ${index * 0.08}s,
                      box-shadow .25s`,
         position: "relative", zIndex: LAYERS.length - index,
+        "--accent-color": accent
       }}
       onMouseEnter={e => { e.currentTarget.style.boxShadow = `0 4px 20px ${accent}18`; e.currentTarget.style.transform = "translateX(2px)"; }}
       onMouseLeave={e => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "translateX(0)"; }}
     >
       {/* Left label */}
-      <div style={{
+      <div className="skill-label" style={{
         padding: "20px 20px 20px 24px",
         borderRight: `2px solid ${accent}`,
         display: "flex", flexDirection: "column",
@@ -99,7 +101,7 @@ function Layer({ layer, index, visible }) {
       </div>
 
       {/* Chips */}
-      <div style={{
+      <div className="skill-chips" style={{
         padding: "18px 20px 18px 24px",
         display: "flex", flexWrap: "wrap",
         gap: 7, alignContent: "center",
@@ -132,6 +134,21 @@ export default function SkillStack() {
       {LAYERS.map((layer, i) => (
         <Layer key={layer.num} layer={layer} index={i} visible={visible} />
       ))}
+      <style>{`
+        @media (max-width: 768px) {
+          .skill-layer { 
+            grid-template-columns: 1fr !important;
+          }
+          .skill-label {
+            border-right: none !important;
+            border-bottom: 2px solid var(--accent-color) !important;
+            padding: 15px 20px !important;
+          }
+          .skill-chips {
+            padding: 15px 15px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

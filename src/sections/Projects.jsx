@@ -132,12 +132,12 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  <div style={{ padding: 40, flex: 1, display: "flex", flexDirection: "column" }}>
+                  <div style={{ padding: 40, flex: 1, display: "flex", flexDirection: "column" }} className="project-card-content">
                     <div className="mono" style={{ fontSize: 9, color: C.gold, letterSpacing: ".14em", textTransform: "uppercase", marginBottom: 12, fontWeight: 600 }}>
                       {p.type}
                     </div>
 
-                    <h3 className="serif" style={{ fontSize: 24, fontWeight: 600, color: C.ink, marginBottom: 16 }}>
+                    <h3 className="serif project-title" style={{ fontSize: 24, fontWeight: 600, color: C.ink, marginBottom: 16 }}>
                       {p.title}
                     </h3>
 
@@ -236,7 +236,14 @@ export default function Projects() {
 
       <style>{`
         @media (max-width: 900px) {
-          .projects-grid { grid-template-columns: 1fr !important; }
+          .projects-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+        }
+        @media (max-width: 768px) {
+          .mob-hide { display: none !important; }
+          #home { padding-top: 80px; }
+          .two-col { gap: 20px !important; }
+          .project-card-content { padding: 30px 24px !important; }
+          .project-title { fontSize: 20px !important; }
         }
       `}</style>
     </section>

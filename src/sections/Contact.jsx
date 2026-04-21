@@ -1,12 +1,8 @@
 import { useState } from "react";
 import { C } from "../styles/theme";
-import { Reveal, Label, Divider } from "../components";
+import { Reveal, Label } from "../components";
 
-const LINKS = [
-  { l: "GitHub",                    h: "https://github.com/Khaoula1025" },
-  { l: "LinkedIn",                  h: "https://linkedin.com/in/k-esioudi" },
-  { l: "khaoula.esioudi@gmail.com", h: "mailto:khaoula.esioudi@gmail.com" },
-];
+
 
 function ContactForm() {
   const [form, setForm]       = useState({ name: "", email: "", message: "" });
@@ -124,22 +120,7 @@ export default function Contact() {
 
         <Reveal delay={.15}><ContactForm /></Reveal>
 
-        <Reveal delay={.2}>
-          <Divider my={44} />
-          <div style={{ display: "flex", gap: 28, flexWrap: "wrap" }}>
-            {LINKS.map(({ l, h }) => (
-              <a
-                key={l} href={h} target="_blank" rel="noreferrer"
-                className="mono"
-                style={{ fontSize: 10, color: C.ink, letterSpacing: ".14em", fontWeight: 600, borderBottom: `1px solid ${C.bg3}`, paddingBottom: 2, transition: "color .2s, border-color .2s" }}
-                onMouseEnter={(e) => { e.currentTarget.style.color = C.sage; e.currentTarget.style.borderColor = `${C.sage}60`; }}
-                onMouseLeave={(e) => { e.currentTarget.style.color = C.ink; e.currentTarget.style.borderColor = C.bg3; }}
-              >
-                {l} ↗
-              </a>
-            ))}
-          </div>
-        </Reveal>
+
       </div>
     </section>
   );

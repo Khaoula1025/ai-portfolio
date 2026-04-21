@@ -50,7 +50,7 @@ export default function Hero({ theme }) {
       }} />
 
       <div className="wrap" style={{ position: "relative", zIndex: 1, width: "100%" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1.2fr 0.8fr", gap: 40, alignItems: "center" }} className="two-col">
+        <div className="two-col hero-grid" style={{ display: "grid", gap: 40, alignItems: "center" }}>
 
           <div>
             {/* ... Status Badge ... */}
@@ -220,8 +220,13 @@ export default function Hero({ theme }) {
           50% { transform: scale(1.5); opacity: 0.5; }
           100% { transform: scale(1); opacity: 1; }
         }
-        @media (max-width: 768px) {
+        .hero-grid { grid-template-columns: 1.2fr 0.8fr; }
+        @media (max-width: 1024px) {
+          .hero-grid { grid-template-columns: 1fr; }
           .mob-hide { display: none !important; }
+        }
+        @media (max-width: 768px) {
+          #home { padding-top: 80px; }
         }
       `}</style>
     </section>

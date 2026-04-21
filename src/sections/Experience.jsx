@@ -62,6 +62,10 @@ export default function Experience({ theme }) {
                   transition: TRANSITIONS.smooth,
                 }} className="full-width-mob">
                   
+                  <div className="mono period-mob" style={{ display: "none", fontSize: 10, color: C.gold, fontWeight: 600, letterSpacing: ".1em", marginBottom: 16 }}>
+                    {exp.period}
+                  </div>
+                  
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
                     {/* Company Tag / Badge */}
                     <div style={{ 
@@ -122,9 +126,10 @@ export default function Experience({ theme }) {
           100% { transform: scale(1); opacity: 1; }
         }
         @media (max-width: 768px) {
-          .full-width-mob { width: 100% !important; padding: 30px !important; }
+          .full-width-mob { width: 100% !important; padding: 24px !important; }
           .mob-hide { display: none !important; }
-          .exp-row { gap: 0 !important; }
+          .exp-row { flex-direction: column !important; gap: 12px !important; }
+          .period-mob { display: block !important; margin-bottom: 8px; }
         }
       `}</style>
     </section>

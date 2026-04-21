@@ -47,7 +47,7 @@ export default function About({ theme }) {
   return (
     <section id="about" style={{ background: C.bg2, transition: "background 0.3s ease" }}>
       <div className="wrap">
-        <div className="two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
+        <div className="two-col about-grid" style={{ display: "grid", gap: 80, alignItems: "center" }}>
           {/* Left */}
           <div>
             <Reveal>
@@ -84,6 +84,15 @@ export default function About({ theme }) {
           </Reveal>
         </div>
       </div>
+      <style>{`
+        .about-grid { grid-template-columns: 1.1fr 0.9fr; }
+        @media (max-width: 1024px) {
+          .about-grid { gap: 40px !important; }
+        }
+        @media (max-width: 768px) {
+          .about-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </section>
   );
 }

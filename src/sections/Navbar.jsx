@@ -130,24 +130,72 @@ export default function Navbar({ active, theme, setTheme }) {
             onClick={() => go(s)}
             style={{
               background: "none", border: "none", textAlign: "left",
-              padding: "20px 0", cursor: "pointer",
+              padding: "16px 0", cursor: "pointer",
               opacity: open ? 1 : 0,
               transform: open ? "none" : "translateY(20px)",
               transition: `all 0.4s ease ${0.1 + i * 0.05}s`
             }}
           >
             <span className="mono" style={{ fontSize: 10, color: C.gold, marginRight: 20 }}>0{i+1}</span>
-            <span className="serif" style={{ fontSize: 48, color: C.ink, textTransform: "capitalize", fontWeight: 500 }}>
+            <span className="serif" style={{ fontSize: "clamp(32px, 8vw, 48px)", color: C.ink, textTransform: "capitalize", fontWeight: 500 }}>
               {s}
             </span>
           </button>
         ))}
+
+        {/* Mobile-only Actions */}
+        <div style={{ 
+          marginTop: 40, 
+          display: "flex", 
+          flexDirection: "column", 
+          gap: 20,
+          opacity: open ? 1 : 0,
+          transform: open ? "none" : "translateY(20px)",
+          transition: "all 0.4s ease 0.5s"
+        }} className="mob-only">
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            <span className="mono" style={{ fontSize: 10, color: C.inkL }}>THEME</span>
+            <button
+              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+              style={{
+                width: 48, height: 28, borderRadius: 20, border: "none",
+                background: theme === "light" ? "#E8E0D3" : "#2A3328",
+                cursor: "pointer", display: "flex", alignItems: "center",
+                justifyContent: theme === "light" ? "flex-start" : "flex-end",
+                padding: "0 6px", transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+              }}
+            >
+              <div style={{ fontSize: 14, color: theme === "light" ? "#495F4B" : "#D4A83A" }}>
+                {theme === "light" ? "☀" : "☾"}
+              </div>
+            </button>
+          </div>
+
+          <a
+            href="/cv.pdf"
+            download
+            style={{
+              fontFamily: FONTS.serif, fontWeight: 600, fontSize: 14,
+              color: "#FFFFFF",
+              background: C.sage,
+              borderRadius: 2, padding: "16px 32px",
+              textDecoration: "none",
+              textAlign: "center",
+              boxShadow: SHADOWS.sm,
+            }}
+          >
+            ↓ Download CV
+          </a>
+        </div>
       </div>
 
       <style>{`
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
           .mob-hide { display: none !important; }
           .mob-show { display: flex !important; }
+        }
+        @media (min-width: 1025px) {
+          .mob-only { display: none !important; }
         }
       `}</style>
     </>

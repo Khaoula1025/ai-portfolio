@@ -95,7 +95,7 @@ export default function Footer({ theme }) {
         </div>
 
         {/* Bottom Bar */}
-        <div style={{ 
+        <div className="footer-bottom" style={{ 
           borderTop: "1px solid rgba(245,240,232,0.1)", 
           padding: "20px 0",
           display: "flex",
@@ -110,6 +110,21 @@ export default function Footer({ theme }) {
           </div>
         </div>
       </div>
+      <style>{`
+        @media (max-width: 768px) {
+          .two-col { 
+            grid-template-columns: 1fr !important; 
+            text-align: left !important;
+            gap: 48px !important;
+          }
+          .two-col > div { text-align: left !important; }
+          .footer-bottom { 
+            flex-direction: column !important; 
+            gap: 12px !important; 
+            align-items: flex-start !important; 
+          }
+        }
+      `}</style>
     </footer>
   );
 }
