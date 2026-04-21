@@ -13,10 +13,32 @@ function ContactForm() {
   const [sent, setSent]       = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => { setLoading(false); setSent(true); }, 1100);
+    
+    try {
+      const response = await fetch("https://formspree.io/f/xkokveqw", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          _subject: `New Portfolio Message from ${form.name}`
+        })
+      });
+      
+      if (response.ok) {
+        setSent(true);
+      } else {
+        alert("Oops! There was a problem submitting your form. Please try again.");
+      }
+    } catch (error) {
+      alert("Error sending message. Please check your connection.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const inputStyle = {
