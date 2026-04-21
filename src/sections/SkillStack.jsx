@@ -1,31 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 
-const LAYERS = [
-  {
-    num: "01",
-    name: "Frontend",
-    accent: "#6B8F6E",
-    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Redux", "Vite"],
-  },
-  {
-    num: "02",
-    name: "Backend",
-    accent: "#B8922A",
-    skills: ["FastAPI", "Laravel", "Node.js", "Express.js", "PostgreSQL", "MySQL", "MongoDB", "Redis"],
-  },
-  {
-    num: "03",
-    name: "AI / ML",
-    accent: "#D4A83A",
-    skills: ["LangChain", "RAG", "LLMs", "XGBoost", "Prophet", "Scikit-learn", "PyTorch", "TensorFlow", "Keras", "OpenCV", "MLflow", "HuggingFace", "SHAP", "NumPy", "Pandas", "ChromaDB", "Evidently AI"],
-  },
-  {
-    num: "04",
-    name: "DevOps & Infra",
-    accent: "#728A70",
-    skills: ["Docker", "Kubernetes", "Airflow", "Terraform", "GitHub Actions", "Azure", "Vercel", "Linux", "Jupyter"],
-  },
-];
+import { SKILLS, SKILL_CATEGORIES } from "../data";
+
+const LAYERS = SKILL_CATEGORIES.map((cat, i) => ({
+  num: `0${i + 1}`,
+  name: cat.label,
+  accent: cat.accent,
+  skills: Object.keys(SKILLS[cat.label]).flatMap(sub => SKILLS[cat.label][sub].map(s => s.name))
+}));
 
 function Chip({ label, accent }) {
   const [hov, setHov] = useState(false);
