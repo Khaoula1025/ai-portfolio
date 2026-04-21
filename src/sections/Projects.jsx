@@ -3,23 +3,78 @@ import { C, SHADOWS, TRANSITIONS, FONTS } from "../styles/theme";
 import { PROJECTS } from "../data";
 import { Reveal, Label } from "../components";
 
-function DeviceMockup({ title, accent }) {
+function DeviceMockup({ title, accent, image }) {
   return (
     <div style={{
-      width: "100%", height: 240, background: C.bg2, borderRadius: "4px 4px 0 0",
+      width: "100%", height: 320, background: C.bg2, borderRadius: "4px 4px 0 0",
       display: "flex", alignItems: "center", justifyContent: "center",
       position: "relative", overflow: "hidden", border: `1px solid ${C.bg3}`,
       borderBottom: "none"
     }}>
-      {/* Laptop Frame SVG */}
-      <svg width="80%" height="70%" viewBox="0 0 400 240" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.9 }}>
-        <rect x="10" y="10" width="380" height="210" rx="4" stroke={C.inkL} strokeWidth="2" />
-        <path d="M5 225H395" stroke={C.inkL} strokeWidth="4" strokeLinecap="round" />
-        <rect x="180" y="215" width="40" height="4" rx="2" fill={C.inkL} />
-        {/* Screen with Accent Color */}
-        <rect x="20" y="20" width="360" height="190" rx="2" fill={accent} opacity="0.12" />
-        <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fill={C.ink} style={{ fontFamily: "Playfair Display, serif", fontSize: 20, fontWeight: 600 }}>{title}</text>
-      </svg>
+      {image ? (
+        <div style={{ width: "100%", height: "100%", position: "relative" }}>
+           <img 
+            src={image} 
+            alt={title} 
+            style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }} 
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+              e.currentTarget.nextSibling.style.display = 'flex';
+            }}
+          />
+          <div style={{
+            display: "none", width: "100%", height: "100%", alignItems: "center", justifyContent: "center",
+            background: `linear-gradient(135deg, ${accent}22 0%, ${accent}44 100%)`,
+            position: "relative", overflow: "hidden"
+          }}>
+            {/* Abstract Procedural Pattern */}
+            <svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0, opacity: 0.3 }}>
+              <defs>
+                <filter id={`f${title.replace(/\s+/g, '')}`}>
+                  <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="3" result="noise" />
+                  <feDisplacementMap in="SourceGraphic" in2="noise" scale="50" />
+                </filter>
+              </defs>
+              <rect width="100%" height="100%" fill="transparent" />
+              <circle cx="50%" cy="50%" r="40%" fill={accent} opacity="0.2" filter={`url(#f${title.replace(/\s+/g, '')})`} />
+              <circle cx="20%" cy="30%" r="20%" fill={accent} opacity="0.1" filter={`url(#f${title.replace(/\s+/g, '')})`} />
+            </svg>
+            <span style={{ 
+              fontFamily: FONTS.serif, fontSize: 24, fontWeight: 600, color: C.ink, 
+              position: "relative", zIndex: 2, textAlign: "center", padding: 20 
+            }}>
+              {title}
+            </span>
+          </div>
+          <div style={{
+            position: "absolute", inset: 0, 
+            background: `linear-gradient(to bottom, transparent 60%, ${C.white} 100%)`,
+            zIndex: 1
+          }} />
+        </div>
+      ) : (
+        <div style={{ 
+          width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center",
+          background: `linear-gradient(135deg, ${accent}11 0%, ${accent}22 100%)`,
+          position: "relative", overflow: "hidden"
+        }}>
+           <svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0, opacity: 0.4 }}>
+              <defs>
+                <filter id={`f-fallback-${title.replace(/\s+/g, '')}`}>
+                  <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="2" result="noise" />
+                  <feDisplacementMap in="SourceGraphic" in2="noise" scale="30" />
+                </filter>
+              </defs>
+              <rect width="100%" height="100%" fill="transparent" />
+              <circle cx="60%" cy="40%" r="35%" fill={accent} opacity="0.15" filter={`url(#f-fallback-${title.replace(/\s+/g, '')})`} />
+              <circle cx="30%" cy="70%" r="25%" fill={accent} opacity="0.1" filter={`url(#f-fallback-${title.replace(/\s+/g, '')})`} />
+            </svg>
+            <div style={{ textAlign: "center", position: "relative", zIndex: 2 }}>
+              <div className="mono" style={{ fontSize: 10, color: accent, marginBottom: 10, letterSpacing: ".2em" }}>PROJECT VISUAL</div>
+              <h4 className="serif" style={{ fontSize: 22, color: C.ink }}>{title}</h4>
+            </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -66,7 +121,7 @@ export default function Projects() {
                   }}
                 >
                   <div style={{ position: "relative" }}>
-                    <DeviceMockup title={p.title} accent={p.accent} />
+                    <DeviceMockup title={p.title} accent={p.accent} image={p.image} />
                     <div style={{
                       position: "absolute", top: 15, right: 15,
                       background: "rgba(255,255,255,0.95)", backdropFilter: "blur(4px)",

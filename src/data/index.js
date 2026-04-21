@@ -9,6 +9,7 @@ export const PROJECTS = [
     desc: "AI platform forecasting hotel occupancy (1–30 days) and recommending optimal room pricing for UNO Hotels. XGBoost + Prophet ensemble, daily Airflow pipeline.",
     tags: ["XGBoost", "Prophet", "FastAPI", "Airflow", "MLflow", "Next.js", "SHAP"],
     accent: C.sage,
+    image: "/assets/projects/smartstay.png",
     link: "https://github.com/Khaoula1025/SmartStayAi",
     metrics: ["82% Prediction Accuracy", "1–30 Day Forecast Horizon", "Real-time Ensemble Model"]
   },
@@ -19,7 +20,8 @@ export const PROJECTS = [
     year: "2025",
     desc: "End-to-end Data & AI platform for automated job analysis. NER skill extraction via Azure AI, salary prediction (ML), full DevOps automation.",
     tags: ["FastAPI", "Next.js", "Azure AI", "NER", "Docker", "Terraform", "CI/CD"],
-    accent: C.olive,
+    accent: "#5F735C", // Deep Olive
+    image: "/assets/projects/hrpulse.png",
     link: "https://github.com/Khaoula1025/HR-Pulse",
     metrics: ["88% NER Skill Extraction", "Infrastructure as Code", "Full CI/CD Automation"]
   },
@@ -31,6 +33,7 @@ export const PROJECTS = [
     desc: "Intelligent HR platform predicting employee churn via ML and generating personalized retention plans using Generative AI.",
     tags: ["Machine Learning", "Generative AI", "FastAPI", "React", "PostgreSQL"],
     accent: C.gold,
+    image: "/assets/projects/retention.png",
     link: "https://github.com/Khaoula1025/RetentionAI-Employee-Churn-Prediction-HR-Decision-Support-System-frontend",
     metrics: ["92% F1-Score Churn Detection", "GenAI Personalized Strategy", "Secure Production API"]
   },
@@ -41,7 +44,8 @@ export const PROJECTS = [
     year: "Dec 2025",
     desc: "Full-stack press analysis platform combining Zero-Shot classification and Generative AI to categorize, synthesize and analyze article tone.",
     tags: ["FastAPI", "Zero-Shot", "Generative AI", "React", "Machine Learning"],
-    accent: C.moss,
+    accent: "#2D4A5E", // Slate Blue
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
     link: "https://github.com/Khaoula1025/zero-shot-ai-orchestration-platform-frontend",
     metrics: ["Multi-Model Orchestration", "Zero-Shot Classification", "Real-time Analysis"]
   },
@@ -52,7 +56,8 @@ export const PROJECTS = [
     year: "Nov 2025",
     desc: "AI API prototype for real-time face detection and emotion prediction. OpenCV + CNN TensorFlow/Keras pipeline with FastAPI.",
     tags: ["OpenCV", "TensorFlow", "Keras", "FastAPI", "PostgreSQL", "CNN"],
-    accent: C.sage,
+    accent: "#42D07C", // Vibrant Green
+    image: "/assets/projects/face.png",
     link: "https://github.com/Khaoula1025/Khaoula1025-Sentiment-Analysis-Application-with-External-AI-Service-backend",
     metrics: ["Real-time Emotion Detection", "CNN + OpenCV Pipeline", "Automated CI Tests"]
   },
@@ -63,7 +68,8 @@ export const PROJECTS = [
     year: "Feb 2026",
     desc: "End-to-end NLP batch pipeline for automated IT support ticket classification. HuggingFace embeddings, ChromaDB vector store, supervised learning.",
     tags: ["NLP", "HuggingFace", "ChromaDB", "Docker", "Kubernetes", "Evidently AI"],
-    accent: C.gold,
+    accent: "#A65D43", // Terracotta
+    image: "/assets/projects/smartticket.png",
     link: "https://github.com/Khaoula1025/SmartTicketPipeline",
     metrics: ["Automated NLP Classification", "HuggingFace Embeddings", "Drift Detection (Evidently AI)"]
   },
@@ -74,7 +80,8 @@ export const PROJECTS = [
     year: "Feb 2026",
     desc: "LLMOps RAG assistant for IT support. PDF ingestion, semantic search with embeddings, FastAPI backend, full Kubernetes orchestration.",
     tags: ["RAG", "LangChain", "FastAPI", "Vector DB", "Docker", "Kubernetes", "PostgreSQL"],
-    accent: C.olive,
+    accent: "#8C6A42", // Bronze
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
     link: "https://github.com/Khaoula1025/it-support-rag-mlops",
     metrics: ["End-to-end LLMOps Pipeline", "Semantic Search + RAG", "Kubernetes Orchestration"]
   },

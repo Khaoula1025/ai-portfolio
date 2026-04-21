@@ -20,12 +20,12 @@ export default function Hero({ theme }) {
   return (
     <section
       id="home"
-      style={{ 
-        minHeight: "100vh", 
-        display: "flex", 
-        alignItems: "center", 
-        paddingTop: 100, 
-        background: C.bg, 
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        paddingTop: 100,
+        background: C.bg,
         overflow: "hidden",
         position: "relative"
       }}
@@ -39,7 +39,7 @@ export default function Hero({ theme }) {
         `,
         backgroundSize: "60px 60px", pointerEvents: "none",
       }} />
-      
+
       <div style={{
         position: "absolute", top: "15%", right: "5%", width: "30vw", height: "1px",
         background: `linear-gradient(to right, transparent, ${C.gold}40)`, opacity: .6
@@ -51,17 +51,17 @@ export default function Hero({ theme }) {
 
       <div className="wrap" style={{ position: "relative", zIndex: 1, width: "100%" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1.2fr 0.8fr", gap: 40, alignItems: "center" }} className="two-col">
-          
+
           <div>
             {/* ... Status Badge ... */}
             {/* Main Title */}
             <div style={{ marginBottom: 40 }}>
               <div style={{ overflow: "hidden" }}>
-                <h1 className="serif" style={{ 
-                  fontSize: "clamp(80px, 12vw, 160px)", 
-                  fontWeight: 600, 
-                  lineHeight: 0.85, 
-                  letterSpacing: "-.04em", 
+                <h1 className="serif" style={{
+                  fontSize: "clamp(80px, 12vw, 160px)",
+                  fontWeight: 600,
+                  lineHeight: 0.85,
+                  letterSpacing: "-.04em",
                   color: C.ink,
                   animation: "splitReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) both",
                   animationDelay: "0.4s"
@@ -70,13 +70,13 @@ export default function Hero({ theme }) {
                 </h1>
               </div>
               <div style={{ overflow: "hidden", marginTop: -10 }}>
-                <h1 className="serif" style={{ 
-                  fontSize: "clamp(80px, 12vw, 160px)", 
-                  fontWeight: 600, 
-                  lineHeight: 0.85, 
+                <h1 className="serif" style={{
+                  fontSize: "clamp(80px, 12vw, 160px)",
+                  fontWeight: 600,
+                  lineHeight: 0.85,
                   fontStyle: "italic",
                   letterSpacing: "-.04em",
-                  color: "transparent", 
+                  color: "transparent",
                   WebkitTextStroke: `1.5px ${C.sage}`,
                   animation: "splitReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) both",
                   animationDelay: "0.55s"
@@ -98,26 +98,26 @@ export default function Hero({ theme }) {
 
             {/* Description */}
             <div style={{ animation: "fadeUp 1.2s ease both", animationDelay: "0.95s" }}>
-              <p className="serif" style={{ 
-                fontSize: 19, 
-                fontWeight: 500, 
-                color: C.sage, 
-                maxWidth: 540, 
-                lineHeight: 1.85, 
+              <p className="serif" style={{
+                fontSize: 19,
+                fontWeight: 500,
+                color: C.sage,
+                maxWidth: 540,
+                lineHeight: 1.85,
                 marginBottom: 56,
-                fontStyle: "italic" 
+                fontStyle: "italic"
               }}>
-                Architecting intelligent systems where data meets design. 
+                Architecting intelligent systems where data meets design.
                 Full-stack precision with an AI-first mindset.
               </p>
             </div>
 
             {/* Actions */}
-            <div style={{ 
-              animation: "fadeUp 1.2s ease both", 
-              animationDelay: "1.1s", 
-              display: "flex", 
-              gap: 16, 
+            <div style={{
+              animation: "fadeUp 1.2s ease both",
+              animationDelay: "1.1s",
+              display: "flex",
+              gap: 16,
               alignItems: "center",
               flexWrap: "wrap"
             }}>
@@ -140,10 +140,10 @@ export default function Hero({ theme }) {
             </div>
           </div>
           {/* Right Side: Stats Card */}
-          <div 
-            className="mob-hide" 
-            style={{ 
-              animation: "scaleIn 1.8s cubic-bezier(0.16, 1, 0.3, 1) both", 
+          <div
+            className="mob-hide"
+            style={{
+              animation: "scaleIn 1.8s cubic-bezier(0.16, 1, 0.3, 1) both",
               animationDelay: "0.6s",
               position: "relative"
             }}
@@ -153,11 +153,19 @@ export default function Hero({ theme }) {
               background: C.card,
               border: theme === "dark" ? `1px solid ${C.gold}30` : `1px solid ${C.bg3}`,
               borderTop: `2px solid ${C.gold}`,
-              boxShadow: SHADOWS.lg,
+              boxShadow: theme === "dark" ? `0 20px 40px ${C.gold}15, 0 0 0 1px ${C.gold}20` : SHADOWS.lg,
               borderRadius: 12,
               transition: TRANSITIONS.theme,
-              animation: "cardFloat 6s ease-in-out infinite"
+              animation: "cardFloat 6s ease-in-out infinite",
+              position: "relative",
+              overflow: "hidden"
             }}>
+              {/* Animated Glow Border Overlay */}
+              <div style={{
+                position: "absolute", top: 0, left: 0, width: "100%", height: "2px",
+                background: `linear-gradient(90deg, transparent, ${C.gold}, transparent)`,
+                animation: "borderFlow 4s linear infinite"
+              }} />
               {/* Stats Row */}
               <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 32 }}>
                 {[
@@ -176,7 +184,7 @@ export default function Hero({ theme }) {
 
               {/* Info Rows */}
               {[
-                { label: "Currently Building", value: "RAG Chatbot @ Calliep" },
+                { label: "Currently Building", value: "RAG Chatbot @ Qualiup group" },
                 { label: "Last Shipped", value: "SmartStay Intelligence · 2026" },
                 { label: "Open To", value: "AI Roles · Full-Stack · Remote" },
               ].map((row, i) => (
@@ -202,6 +210,10 @@ export default function Hero({ theme }) {
         @keyframes cardFloat {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-15px); }
+        }
+        @keyframes borderFlow {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
         }
         @keyframes pulseGreen {
           0% { transform: scale(1); opacity: 1; }
